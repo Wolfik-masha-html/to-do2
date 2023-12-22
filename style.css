@@ -1,0 +1,25 @@
+button{
+border-radius: 10px;
+background-color: cadetblue;
+margin-bottom: 10px;
+margin-left: 10px;
+}
+li{
+  align-items: center;
+    border: 1px solid teal;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+ul{
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+p{
+    font-size: 20px;
+}
+
+li Input:checked~ p{
+    text-decoration: line-through red;
+}

@@ -1,53 +1,58 @@
 const list = document.querySelector(".list");
 const input = document.querySelector(".input");
 const btn = document.querySelector(".btn");
-console.log(input)
 
 let tasks=[]
 
-
-
 const todoHandler = () => {
-    if(input.value.trim()!==""){
-        const dataText = input.value
-        const randomNumber = Math.round(Math.random() * 1000 )
-        const task = {
-            id:randomNumber,
-            text:dataText,
-            completed:false
-        }
-        tasks.push(task)
-        input.value =""
+  if (input.value.trim()!=="") {
+    const dataText = input.value
+    const rundomNumber = Math.round(Math.random() * 100000)
+    const task = {
+      id:rundomNumber,
+      text:dataText,
+      completed:false
+      
     }
-   console.log(tasks);
+    tasks.push(task)
+    input.value=""
+  }
+  console.log(tasks);
 }
 
+console.log();
 
 btn.addEventListener("click",(event)=>{
-    event.preventDefault()
-    todoHandler()
-    renderTodo(tasks)
+  event.preventDefault()
+  todoHandler()
+  renderTodo(tasks)
 })
 
 
 function renderTodo(items) {
-    const marcup = items.
-    map ((item)=>{
-        return `<li>
-        <input type="checkbox" ${item.completed}>
-      <p>id: ${item.id}</p>
-      <p> ${item.text}</p>
-      <button>Delete</button>
-      <button oneclick="removetodo${item.id}">Delete</button>
-      </li>`;
-    }
-)
-.join("")
-console.log(marcup);
-list.innerHTML = marcup
+  const marcup = items.
+  map((item)=>{
+    return `<li>
+    <label class="label">
+    <input type="checkbox" class="checkbox" cheked="${item.completed}">
+    <span class="custom__radio"></span>
+    </label>
+    <p>${item.text}</p>
+    <button onclick="removeTodo(${item.id})">Видалити</button>
+    </li>`
+  })
+  .join("")
+  console.log(marcup);
+  list.innerHTML=marcup
 }
 
-function removetodo(id) {
-const filteredtasks = tasks.filter((item)=>item.id!==id)
-tasks = filteredtasks
+// function removeTodo(id) {
+//   const filteredTasks = tasks.filter((item)=>item.id!==id)
+//   tasks=filteredTasks
+// }
+
+window.removeTodo=function (id) {
+  const filteredTasks = tasks.filter((item)=>item.id!==id)
+  tasks=filteredTasks
+  renderTodo(tasks) 
 }
